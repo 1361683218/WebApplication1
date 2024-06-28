@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "My Courses";
+}
+
+<h2>My Courses</h2>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+<table id="courseTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                Course Code
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Credits
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCodeNavigation.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCodeNavigation.Credits)
+                </td>
+                <td>
+                    <form asp-action="CancelCourse" method="post">
+                        <input type="hidden" name="courseCode" value="@item.CourseCode" />
+                        <input type="submit" value="Cancel" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#courseTable').DataTable();
+    });
+</script>

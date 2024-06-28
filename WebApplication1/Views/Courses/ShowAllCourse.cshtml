@@ -1,0 +1,62 @@
+﻿@using WebApplication1.Models;
+@model List<Course>
+
+<header class="panel-heading">
+    <div class="panel-actions">
+        <a href="#" class="fa fa-caret-down"></a>
+        <a href="#" class="fa fa-times"></a>
+    </div>
+
+    <h2 class="panel-title">Actions</h2>
+</header>
+<div class="panel-body">
+    <div class="mb-3">
+        <a asp-action="AddCourse" class="btn btn-success"><i class="fa fa-plus"></i> Add Course</a>
+    </div>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table id="coursesTable" class="table mb-none">
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Credits</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CourseCode</td>
+                        <td>@item.CourseName</td>
+                        <td>@item.Credits</td>
+                        <td class="actions">
+                            <a asp-action="CourseEdit" asp-route-id="@item.CourseCode" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                            <a asp-action="CourseDelete" asp-route-id="@item.CourseCode" class="btn btn-danger deleted-row"><i class="fa fa-trash-o"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#coursesTable').DataTable();
+    });
+</script>

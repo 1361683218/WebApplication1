@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.Course>
+
+@{
+    ViewData["Title"] = "Course Query";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <h2>Course Query</h2>
+
+    <table id="courseTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be loaded via AJAX -->
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var enrolledCourses = @Html.Raw(Json.Serialize(ViewBag.EnrolledCourses));
+            console.log("Enrolled Courses:", enrolledCourses);
+
+            $('#courseTable').DataTable({
+                ajax: {
+                    url: '/StudentCourse/GetCourses',
+                    dataSrc: 'data'
+                },
+                columns: [
+                    { data: 'courseCode' },
+                    { data: 'courseName' },
+                    { data: 'credits' },
+                    {
+                        data: null,
+                        render: function (data, type, row) {
+                            console.log("Rendering row:", data);
+                            if (enrolledCourses.includes(data.courseCode)) {
+                                return '<span class="text-success">Already Selected</span>';
+                            } else {
+                                return '<form asp-action="SelectCourse" method="post"><input type="hidden" name="courseCode" value="' + data.courseCode + '" /><input type="submit" value="Select" class="btn btn-primary" /></form>';
+                            }
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
