@@ -1,0 +1,56 @@
+﻿@model WebApplication1.Models.Enrollment
+
+@{
+    ViewData["Title"] = "删除选课";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Depts.css">
+    <style>
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; /* 调整这个值来控制表单在垂直方向上的位置 */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-form">
+        <div class="col-md-6">
+            <div class="delete-container">
+                <h2>删除选课</h2>
+                <h3>你确定要删除这个选课记录吗？</h3>
+                <div>
+                    <h4>选课信息</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            课程代码
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.CourseCodeNavigation.CourseCode)
+                        </dd>
+                        <dt class="col-sm-4">
+                            学生编号
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Student.Id)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="EnrollmentId" />
+                        <input type="submit" value="删除" class="btn btn-danger" /> |
+                        <a asp-action="Index">返回列表</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

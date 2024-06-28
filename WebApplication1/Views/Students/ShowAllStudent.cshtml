@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplication1.Models.Student>
+
+@{
+    ViewData["Title"] = "所有学生";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Depts.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <h2>所有学生</h2>
+
+    <p>
+        <a asp-action="AddStudent" class="btn-primary"><i class="fas fa-plus"></i> 添加学生</a>
+    </p>
+
+    <table id="studentsTable" class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.ClassName)</th>
+                <th>@Html.DisplayNameFor(model => model.InitialPassword)</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.InitialPassword)</td>
+                    <td>
+                        <a asp-action="StudentEdit" asp-route-id="@item.Id" class="btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+                        <a asp-action="DeleteStudent" asp-route-id="@item.Id" class="btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#studentsTable').DataTable({
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Chinese.json'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

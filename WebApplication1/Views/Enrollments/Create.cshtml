@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.Enrollment
+
+@{
+    ViewData["Title"] = "添加选课";
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Depts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-form">
+        <div class="col-md-4">
+            <form asp-action="Create" class="form-container">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="CourseCode" class="control-label">课程代码</label>
+                    <select asp-for="CourseCode" class="form-control" asp-items="ViewBag.CourseCode"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StudentId" class="control-label">学生编号</label>
+                    <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="创建" class="btn btn-primary" />
+                </div>
+            </form>
+            <div class="back-to-list">
+                <a asp-action="Index">返回列表</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
