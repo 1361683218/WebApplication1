@@ -32,38 +32,46 @@
     }
 
     <table id="coursesTable" class="table">
-        <thead>
-            <tr>
+            <thead>
+                <tr>
                 <th>课程代码</th>
                 <th>课程名称</th>
                 <th>学分</th>
                 <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.CourseCode</td>
-                    <td>@item.CourseName</td>
-                    <td>@item.Credits</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CourseCode</td>
+                        <td>@item.CourseName</td>
+                        <td>@item.Credits</td>
                     <td>
                         <a asp-action="CourseEdit" asp-route-id="@item.CourseCode" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
                         <a asp-action="CourseDelete" asp-route-id="@item.CourseCode" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
             $('#coursesTable').DataTable({
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Chinese.json'
                 }
             });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

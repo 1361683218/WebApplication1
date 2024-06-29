@@ -25,30 +25,30 @@
             <div class="delete-container">
                 <h2>删除选课</h2>
                 <h3>你确定要删除这个选课记录吗？</h3>
-                <div>
+<div>
                     <h4>选课信息</h4>
-                    <hr />
+    <hr />
                     <dl class="row">
                         <dt class="col-sm-4">
                             课程代码
-                        </dt>
+        </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.CourseCodeNavigation.CourseCode)
-                        </dd>
+            @Html.DisplayFor(model => model.CourseCodeNavigation.CourseCode)
+        </dd>
                         <dt class="col-sm-4">
                             学生编号
-                        </dt>
+        </dt>
                         <dd class="col-sm-8">
-                            @Html.DisplayFor(model => model.Student.Id)
-                        </dd>
-                    </dl>
-
-                    <form asp-action="Delete">
-                        <input type="hidden" asp-for="EnrollmentId" />
+            @Html.DisplayFor(model => model.Student.Id)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EnrollmentId" />
                         <input type="submit" value="删除" class="btn btn-danger" /> |
                         <a asp-action="Index">返回列表</a>
-                    </form>
-                </div>
+    </form>
+</div>
             </div>
         </div>
     </div>

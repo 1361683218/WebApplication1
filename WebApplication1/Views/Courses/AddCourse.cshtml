@@ -24,32 +24,35 @@
     <div class="centered-form">
         <div class="col-md-4">
             <form asp-action="AddCourse" class="form-container">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
                     <label asp-for="CourseCode" class="control-label">课程代码</label>
-                    <input asp-for="CourseCode" class="form-control" />
-                    <span asp-validation-for="CourseCode" class="text-danger"></span>
-                </div>
-                <div class="form-group">
+        <input asp-for="CourseCode" class="form-control" />
+        <span asp-validation-for="CourseCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
                     <label asp-for="CourseName" class="control-label">课程名称</label>
-                    <input asp-for="CourseName" class="form-control" />
-                    <span asp-validation-for="CourseName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
+        <input asp-for="CourseName" class="form-control" />
+        <span asp-validation-for="CourseName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
                     <label asp-for="Credits" class="control-label">学分</label>
-                    <input asp-for="Credits" class="form-control" />
-                    <span asp-validation-for="Credits" class="text-danger"></span>
-                </div>
-                <div class="form-group">
+        <input asp-for="Credits" class="form-control" />
+        <span asp-validation-for="Credits" class="text-danger"></span>
+    </div>
+    <div class="form-group">
                     <input type="submit" value="保存" class="btn btn-primary" />
-                </div>
-            </form>
+    </div>
+</form>
             <div class="back-to-list">
                 <a asp-action="ShowAllCourse">返回列表</a>
             </div>
         </div>
     </div>
 
+<div>
+    <a asp-action="ShowAllCourse">Back to List</a>
+</div>
 
 </body>
 </html>

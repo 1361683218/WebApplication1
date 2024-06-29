@@ -30,38 +30,38 @@
         </div>
     }
 
-    <table id="enrollmentsTable" class="table">
-        <thead>
-            <tr>
+<table id="enrollmentsTable" class="table">
+    <thead>
+        <tr>
                 <th>课程代码</th>
                 <th>学生编号</th>
                 <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
                     <td>@Html.DisplayFor(modelItem => item.CourseCodeNavigation.CourseCode)</td>
                     <td>@Html.DisplayFor(modelItem => item.Student.Id)</td>
-                    <td>
+                <td>
                         <a asp-action="Edit" asp-route-id="@item.EnrollmentId" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
 
                         <a asp-action="Delete" asp-route-id="@item.EnrollmentId" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
             $('#enrollmentsTable').DataTable({
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Chinese.json'
                 }
             });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

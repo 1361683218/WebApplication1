@@ -22,25 +22,26 @@
 </head>
 <body>
     <div class="centered-form">
-        <div class="col-md-4">
+    <div class="col-md-4">
             <form asp-action="Create" class="form-container">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
                     <label asp-for="CourseCode" class="control-label">课程代码</label>
                     <select asp-for="CourseCode" class="form-control" asp-items="ViewBag.CourseCode"></select>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                     <label asp-for="StudentId" class="control-label">学生编号</label>
                     <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="form-group">
                     <input type="submit" value="创建" class="btn btn-primary" />
-                </div>
-            </form>
+            </div>
+        </form>
             <div class="back-to-list">
                 <a asp-action="Index">返回列表</a>
-            </div>
-        </div>
     </div>
+</div>
+
+
 </body>
 </html>
